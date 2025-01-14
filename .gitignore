@@ -3,7 +3,7 @@ datasets-cache
 tmp_workspace
 output
 outputs
-
+.hydra/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

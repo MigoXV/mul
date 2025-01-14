@@ -1,0 +1,42 @@
+# @package _group_
+hydra:
+  run:
+    dir: .
+
+common:
+  log_format: tqdm
+  log_interval: 1
+
+checkpoint:
+  save_dir: outputs/test01
+task:
+  _name: bin-class
+  train_h5_path: data-bin/celeba/split/test.h5
+  valid_h5_path: data-bin/celeba/split/test.h5
+
+dataset:
+  num_workers: 0
+  batch_size: 16
+
+criterion:
+  _name: bce-loss
+
+optimization:
+  max_epoch: 10
+  lr: [0.00005]
+
+optimizer:
+  _name: adam
+  adam_betas: (0.9,0.98)
+  adam_eps: 1e-08
+
+lr_scheduler:
+  _name: fixed
+
+model:
+  _name: resnet18-bin
+  base_layers: 18
+
+distributed_training:
+  distributed_world_size: 1
+  ddp_backend: no_c10d

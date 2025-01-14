@@ -46,7 +46,8 @@ typer = "^0.15.1"
 
 [tool.poetry.scripts]
 mulp = "mulproc.commands:main"
-
+# mul/commands/train_cli_app.py
+mult = "mul.commands.train_cli_app:main"
 [build-system]
 build-backend = "poetry.core.masonry.api"
 requires = ["poetry-core"]

@@ -1,0 +1,1 @@
+from mul.tasks.bin_class import BinClassTask

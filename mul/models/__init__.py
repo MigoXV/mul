@@ -1,0 +1,1 @@
+from mul.models.resnet18 import ResNet18
