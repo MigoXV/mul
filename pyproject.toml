@@ -1,7 +1,10 @@
 [project]
-name = "machine-unlearning"
+name = "mul"
 requires-python = ">=3.10"
-
+packages = [
+    {include = "mul"},
+    {include = "mulproc"},
+]
 [tool.poetry]
 authors = ["MigoXV <1695587905@qq.com>"]
 description = ""
@@ -9,49 +12,40 @@ description = ""
 readme = "README.md"
 version = "0.1.0"
 
-[project.optional-dependencies]
-cpu = [
-  "torch(==2.5.1+cpu)",
-  "torchaudio(==2.5.1+cpu)",
-  "torchvision(==0.20.1+cpu)",
-]
-cuda = [
-  "torch (==2.5.1+cu121)",
-  "torchaudio (==2.5.1+cu121)",
-  "torchvision (==0.20.1+cu121)",
-]
+[[tool.poetry.source]]
+name = "tuna"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+priority = "primary"
 
 [[tool.poetry.source]]
-name = "pytorch-cpu"
-priority = "explicit"
-url = "https://download.pytorch.org/whl/cpu"
-
-[[tool.poetry.source]]
-name = "pytorch-cuda"
+name = "pytorch"
 priority = "explicit"
 url = "https://download.pytorch.org/whl/cu121"
-
-[tool.poetry.dependencies]
-PyYAML = "6.0.2"
-numpy = "2.0.1"
-python = "^3.10"
-torch = [
-  {markers = "extra == 'cpu' and extra != 'cuda'", source = "pytorch-cpu"},
-  {markers = "extra == 'cuda' and extra != 'cpu'", source = "pytorch-cuda"},
-]
-torchaudio = [
-  {markers = "extra == 'cpu' and extra != 'cuda'", source = "pytorch-cpu"},
-  {markers = "extra == 'cuda' and extra != 'cpu'", source = "pytorch-cuda"},
-]
-torchvision = [
-  {markers = "extra == 'cpu' and extra != 'cuda'", source = "pytorch-cpu"},
-  {markers = "extra == 'cuda' and extra != 'cpu'", source = "pytorch-cuda"},
-]
 
 [[tool.poetry.source]]
 name = "mirrors"
 priority = "primary"
 url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/"
+
+[tool.poetry.dependencies]
+PyYAML = "6.0.2"
+numpy = "2.0.1"
+python = "^3.10"
+torch = {version = "2.5.1", source = "pytorch"}
+torchaudio = {version = "2.5.1", source = "pytorch"}
+torchvision = {version = "0.20.1", source = "pytorch"}
+fairseq = "^0.12.2"
+wandb = "^0.19.2"
+scikit-learn = "^1.6.1"
+pyarrow = "^18.1.0"
+pandas = "^2.2.3"
+pillow = "^11.1.0"
+h5py = "^3.12.1"
+imageio = "^2.36.1"
+typer = "^0.15.1"
+
+[tool.poetry.scripts]
+mulp = "mulproc.commands:main"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
