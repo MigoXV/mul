@@ -43,6 +43,7 @@ pillow = "^11.1.0"
 h5py = "^3.12.1"
 imageio = "^2.36.1"
 typer = "^0.15.1"
+seaborn = "^0.13.2"
 
 [tool.poetry.scripts]
 mulp = "mulproc.commands:main"
