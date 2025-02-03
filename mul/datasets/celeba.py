@@ -12,15 +12,15 @@ class CelebADataset(FairseqDataset):
         self.h5_path = h5_path
         self.transform = transform
         with h5py.File(h5_path, "r") as f:
-            self.total_len = len(f["images"])
+            self.total_len = len(f["image"])
 
     def __len__(self):
         return self.total_len
 
     def __getitem__(self, idx):
         with h5py.File(self.h5_path, "r") as f:
-            img = f["images"][idx]
-            label = f["is_male"][idx]
+            img = f["image"][idx]
+            label = f["Mouth_Slightly_Open"][idx]
         return img, label
 
     def collater(self, samples):
