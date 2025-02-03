@@ -5,24 +5,24 @@ hydra:
 
 common:
   log_format: tqdm
-  log_interval: 1
+  log_interval: 5
 
 checkpoint:
-  save_dir: outputs/test01
+  save_dir: outputs/test02
 task:
   _name: bin-class
-  train_h5_path: data-bin/celeba/split/test.h5
+  train_h5_path: data-bin/celeba/split/train.h5
   valid_h5_path: data-bin/celeba/split/test.h5
 
 dataset:
-  num_workers: 0
-  batch_size: 16
+  num_workers: 8
+  batch_size: 64
 
 criterion:
   _name: bce-loss
 
 optimization:
-  max_epoch: 10
+  max_epoch: 40
   lr: [0.00005]
 
 optimizer:
