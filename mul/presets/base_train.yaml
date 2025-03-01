@@ -11,8 +11,8 @@ checkpoint:
   save_dir: outputs/test02
 task:
   _name: bin-class
-  train_h5_path: data-bin/celeba/split/train.h5
-  valid_h5_path: data-bin/celeba/split/test.h5
+  train_h5_path: /data/coding/upload-data/data/celeba/train.h5
+  valid_h5_path: /data/coding/upload-data/data/celeba/test.h5
 
 dataset:
   num_workers: 8
